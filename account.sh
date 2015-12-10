@@ -7,10 +7,15 @@ SLEEP=60
 test -d $SPLITBASEDIR/$CUSTOMER/logs || exit
 
 while true; do
-    test -r $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum || ( sleep $SLEEP; continue )
-    MBYTES=$(echo "$(cat $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum) / ( 1024 * 1024 )" | bc) #"
-    ACCOUNT=$(echo "scale=2;( $MBYTES * $PRICE_PER_MBYTE ) / 100" | bc) #"
-    echo "$ACCOUNT Euro" | sed 's|^\.|0\.|' > $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).account
-sleep $SLEEP
+    test -r $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum
+    if [ $? -eq 0 ]; then
+	cat $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum | grep '[[:digit:]]' > /dev/null
+	if [ $? -eq 0 ]; then
+	    MBYTES=$(echo "$(cat $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum) / ( 1024 * 1024 )" | bc) #"
+	    ACCOUNT=$(echo "scale=2;( $MBYTES * $PRICE_PER_MBYTE ) / 100" | bc) #"
+	    echo "$ACCOUNT Euro" | sed 's|^\.|0\.|' > $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).account
+	fi
+    fi
+    sleep $SLEEP
 done
 exit
