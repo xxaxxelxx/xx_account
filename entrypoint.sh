@@ -3,6 +3,7 @@
 set -e
 #set -x
 
-./account.sh $@
+#./account.sh $@
 
+bash
 exit
