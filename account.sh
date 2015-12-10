@@ -1,7 +1,7 @@
 #!/bin/bash
 SPLITBASEDIR="/customer"
 CUSTOMER=$1
-PRICE_PER_MBYTE_IN_CENT=$( echo "$2" | sed 's|\,|\.|g')
+PRICE_PER_MBYTE_IN_CENT="$(echo $2 | sed 's|\,|\.|g')"
 SLEEP=60
 
 test -d $SPLITBASEDIR/$CUSTOMER/logs || exit
