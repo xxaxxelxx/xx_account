@@ -13,7 +13,7 @@ while true; do
 	if [ $? -eq 0 ]; then
 	    MBYTES=$(echo "$(cat $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).bytesum) / ( 1024 * 1024 )" | bc) #"
 	    ACCOUNT=$(echo "scale=2;( $MBYTES * $PRICE_PER_MBYTE ) / 100" | bc) #"
-	    echo "$ACCOUNT Euro for $MBYTES" | sed 's|^\.|0\.|' > $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).account.txt
+	    echo "$ACCOUNT Euro for $MBYTES MBytes" | sed 's|^\.|0\.|' > $SPLITBASEDIR/$CUSTOMER/logs/$(date +%Y_%m).account.txt
 	fi
     fi
     sleep $SLEEP
