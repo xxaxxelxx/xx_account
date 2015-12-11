@@ -8,8 +8,7 @@ test -d $SPLITBASEDIR/$CUSTOMER/logs || exit
 
 while true; do
     TOFFSET=0
-    while true; do
-	if [ $TOFFSET -gt 86400 ]; then break; fi
+    while [ $TOFFSET -lt 86401 ]; do
 	NOW=$(date +%s)
 	TSTAMP=$(date -d @$(($NOW - $TOFFSET)) +%Y_%m)
 	if $TSTA
