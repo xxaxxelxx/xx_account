@@ -11,7 +11,6 @@ while true; do
     while [ $TOFFSET -lt 86401 ]; do
 	NOW=$(date +%s)
 	TSTAMP=$(date -d @$(($NOW - $TOFFSET)) +%Y_%m)
-	if $TSTA
 	test -r $SPLITBASEDIR/$CUSTOMER/logs/$TSTAMP.bytesum
 	if [ $? -eq 0 ]; then
 	    cat $SPLITBASEDIR/$CUSTOMER/logs/$TSTAMP.bytesum | grep '[[:digit:]]' > /dev/null
