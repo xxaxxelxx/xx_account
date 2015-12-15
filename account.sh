@@ -33,10 +33,16 @@ while true; do
 			PRICE=${A_PRICE_PER_GBYTE_IN_EURO[1]}
 			if [ $GBYTES -ge $BEYOND ]; then
 			    ACCOUNT=$(echo "scale=2;( $GBYTES * $PRICE )" | bc) #"
+			    PRICE_PRINT=$PRICE
 			fi    
 		    done
-		    GBYTES_PRINT=$(echo $GBYTES | sed 's/\(...\)$/\.\1/') #'
-		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes. ($PRICE Euro per GByte)" > $WORKDIR/$TSTAMP.account.txt
+		    if [ ${#GBYTES} -gt 3 ]; then
+			GBYTES_PRINT=$(echo $GBYTES | sed 's/\(...\)$/\.\1/') #'
+		    else
+			GBYTES_PRINT=$GBYTES
+		    fi
+		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes. ($PRICE_PRINT Euro per GByte)" > $WORKDIR/$TSTAMP.account.txt
+#		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes. ($PRICE_PRINT Euro per GByte)"
 		fi
 	    fi
 	    TOFFSET=$(($TOFFSET + ( 86400 * 31 )))
@@ -58,14 +64,19 @@ while true; do
 			OIFS=$IFS;IFS=$'#';A_PRICE_PER_GBYTE_IN_EURO=($STEP);IFS=$OIFS
 			BEYOND=${A_PRICE_PER_GBYTE_IN_EURO[0]}
 			PRICE=${A_PRICE_PER_GBYTE_IN_EURO[1]}
-			if [ $GBYTES -ge $BEYOND ]; then
+			if [ $GBYTES -gt $BEYOND ]; then
 			    GBYTES_COUNTED=$(($GBYTES - $BEYOND))
 			    ACCOUNT=$(echo "scale=2;( ( $GBYTES_COUNTED * $PRICE ) + $ACCOUNT )" | bc) #"
 			    GBYTES=$BEYOND
 			fi    
 		    done
-		    GBYTES_PRINT=$(echo $GBYTES_TOTAL | sed 's/\(...\)$/\.\1/') #'
+		    if [ ${#GBYTES_TOTAL} -gt 3 ]; then
+			GBYTES_PRINT=$(echo $GBYTES_TOTAL | sed 's/\(...\)$/\.\1/') #'
+		    else
+			GBYTES_PRINT=$GBYTES_TOTAL
+		    fi
 		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes." > $WORKDIR/$TSTAMP.account.txt
+#		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes."
 		fi
 	    fi
 	    TOFFSET=$(($TOFFSET + ( 86400 * 31 )))
