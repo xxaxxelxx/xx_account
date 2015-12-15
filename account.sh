@@ -83,8 +83,6 @@ while true; do
 	done
     ;;
     esac
-
-    exit
     sleep $SLEEP
 done
 exit
