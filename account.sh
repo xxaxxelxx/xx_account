@@ -3,7 +3,7 @@ SPLITBASEDIR="/customer"
 CUSTOMER=$1
 PRICELIST_PER_GBYTE_IN_EURO="$(echo $2 | sed 's|\,|\.|g')"
 DISCOUNTTYPE="$3"
-echo "$1 $2 $3" >> /depot/test.txt
+#echo "$1 $2 $3" >> /depot/test.txt
 OIFS=$IFS;IFS=$'+';A_PRICELIST_PER_GBYTE_IN_EURO=($PRICELIST_PER_GBYTE_IN_EURO);IFS=$OIFS
 for STEP in "${A_PRICELIST_PER_GBYTE_IN_EURO[@]}"; do
     A_PRICELIST_PER_GBYTE_IN_EURO_REV=($STEP ${A_PRICELIST_PER_GBYTE_IN_EURO_REV[@]})
