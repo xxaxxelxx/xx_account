@@ -10,11 +10,10 @@ done
 
 SLEEP=60
 
-#WORKDIR="$SPLITBASEDIR/$CUSTOMER/logs"
-WORKDIR="/mnt/docker/HOMEGROWN/TEST"
+WORKDIR="$SPLITBASEDIR/$CUSTOMER/logs"
+#WORKDIR="/mnt/docker/HOMEGROWN/TEST"
 test -d $WORKDIR || exit
 
-echo "$PRICELIST_PER_GBYTE_IN_EURO" > $WORKDIR/test
 
 while true; do
     case $DISCOUNTTYPE in
