@@ -1,0 +1,29 @@
+#!/bin/bash
+SPLITBASEDIR="/customer"
+CUSTOMER=$1
+PRICE_PER_GBYTE="$(echo $2 | sed 's|\,|\.|g')"
+SLEEP=60
+
+WORKDIR="$SPLITBASEDIR/$CUSTOMER/logs"
+
+test -d $WORKDIR || exit
+
+while true; do
+    TOFFSET=0
+    while [ $TOFFSET -lt 86401 ]; do
+	NOW=$(date +%s)
+	TSTAMP=$(date -d @$(($NOW - $TOFFSET)) +%Y_%m)
+	test -r $WORKDIR/$TSTAMP.bytesum
+	if [ $? -eq 0 ]; then
+	    cat $WORKDIR/$TSTAMP.bytesum | grep '[[:digit:]]' > /dev/null
+	    if [ $? -eq 0 ]; then
+		GBYTES=$(echo "$(cat $WORKDIR/$TSTAMP.bytesum) / ( 1024 * 1024 * 1024 )" | bc) #"
+		ACCOUNT=$(echo "scale=2;( $GBYTES * $PRICE_PER_GBYTE ) / 100" | bc) #"
+		echo "$ACCOUNT Euro for $GBYTES GBytes" | sed 's|^\.|0\.|' > $WORKDIR/$TSTAMP.account.txt
+	    fi
+	fi
+	TOFFSET=$(($TOFFSET + 86400))
+    done
+    sleep $SLEEP
+done
+exit
