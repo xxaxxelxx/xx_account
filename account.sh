@@ -48,7 +48,7 @@ while true; do
 #		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes. ($PRICE_PRINT Euro per GByte)"
 		fi
 	    fi
-	    TOFFSET=$(($TOFFSET + ( 86400 * 31 )))
+	    TOFFSET=$(( $TOFFSET + 86400 ))
 	done
     ;;
     *)
@@ -82,7 +82,7 @@ while true; do
 #		    echo "Actually you have to pay $ACCOUNT Euro for $GBYTES_PRINT Gbytes."
 		fi
 	    fi
-	    TOFFSET=$(($TOFFSET + ( 86400 * 31 )))
+	    TOFFSET=$(( $TOFFSET + 86400 ))
 	done
     ;;
     esac
