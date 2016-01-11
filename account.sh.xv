@@ -35,7 +35,7 @@ while true; do
 			BEYOND=${A_PRICE_PER_GBYTE_IN_EURO[0]}
 			PRICE=${A_PRICE_PER_GBYTE_IN_EURO[1]}
 			if [ $GBYTES -ge $BEYOND ]; then
-			    ACCOUNT=$(echo "scale=2;( $GBYTES * $PRICE )/1" | bc) #"
+			    ACCOUNT=$(echo "scale=2;( $GBYTES * $PRICE )" | bc) #"
 			    PRICE_PRINT=$PRICE
 			fi    
 		    done
@@ -69,7 +69,7 @@ while true; do
 			PRICE=${A_PRICE_PER_GBYTE_IN_EURO[1]}
 			if [ $GBYTES -gt $BEYOND ]; then
 			    GBYTES_COUNTED=$(($GBYTES - $BEYOND))
-			    ACCOUNT=$(echo "scale=2;( ( $GBYTES_COUNTED * $PRICE ) + $ACCOUNT )/1" | bc) #"
+			    ACCOUNT=$(echo "scale=2;( ( $GBYTES_COUNTED * $PRICE ) + $ACCOUNT )" | bc) #"
 			    GBYTES=$BEYOND
 			fi    
 		    done
