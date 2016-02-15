@@ -5,8 +5,8 @@
 
 ## Synopsis
 This repo is the base for an [automated docker build](https://hub.docker.com/r/xxaxxelxx/xx_account/) and is part of a dockerized streaming framwork consisting of following elements:
-* xx_account
-* xx_bridgehead (no docker build)
+* [xxaxxelxx/xx_account](https://github.com/xxaxxelxx/xx_account)
+* [xxaxxelxx/xx_bridgehead](https://github.com/xxaxxelxx/xx_bridgehead)
 * xx_converter
 * xx_customerweb
 * xx_geograph
