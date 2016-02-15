@@ -31,7 +31,7 @@ It's main purpose is customer accounting based on streamed bytes, scaled prices 
 
 ### Example
 ```bash
-$ docker run -d --name account_bbradio --volumes-from sshdepot --restart=always xxaxxelxx/xx_account CUSTOMER_ID 0#0.07+10000#0.064+25000#0.056+50000#0.045+100000#0.036+250000#0.028+500000#0.022 retroactive
+$ docker run -d --name account_CUSTOMER_ID --volumes-from sshdepot --restart=always xxaxxelxx/xx_account CUSTOMER_ID 0#0.07+10000#0.064+25000#0.056+50000#0.045+100000#0.036+250000#0.028+500000#0.022 retroactive
 ```
 ***
 
