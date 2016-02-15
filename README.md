@@ -1,10 +1,25 @@
 # Liquidsoap for use with Docker
 
 
-[xxaxxelxx/xx_Liquidsoap](https://index.docker.io/u/xxaxxelxx/xx_liquidsoap/)
+[xxaxxelxx/xx_account](https://index.docker.io/u/xxaxxelxx/xx_account/)
 
 ## Synopsis
-This repo is the base for an [automated docker build](https://hub.docker.com/r/xxaxxelxx/xx_liquidsoap/).
+This repo is the base for an [automated docker build](https://hub.docker.com/r/xxaxxelxx/xx_account/) and is part of a dockerized streaming framwork consisting of following elements:
+* xx_account
+* xx_bridgehead (no docker build)
+* xx_converter
+* xx_customerweb
+* xx_geograph
+* xx_icecast
+* xx_liquidsoap
+* xx_loadbalancer
+* xx_logsplitter
+* xx_pulse
+* xx_reflector
+* xx_rrdcollect
+* xx_rrdgraph
+* xx_sshdepot
+* xx_sshsatellite
 
 The running docker container provides a preconfigured Liquidsoap for very special streaming purposes usable for a distributed architecture.
 It presumably will not fit for you, but it is possible to tune it. If you need some additional information, feel free to ask.
