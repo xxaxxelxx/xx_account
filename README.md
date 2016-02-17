@@ -26,7 +26,7 @@ The running docker container provides a service for very special streaming purpo
 It presumably will not fit for you, but it is possible to tune it. If you need some additional information, please do not hesitate to ask.
 
 This [xxaxxelxx/xx_account](https://hub.docker.com/r/xxaxxelxx/xx_account/) repo is an essential part of a complex compound used for streaming.
-It's main purpose is customer accounting based on streamed bytes, scaled prices are possible. It works either in retroactive (lower prices on higher data amounts affect all the used data volume) or not.
+Its main purpose is customer accounting based on streamed bytes, scaled prices are possible. It works either in retroactive (lower prices on higher data amounts affect all the used data volume) or not.
 
 ### Example
 ```bash
